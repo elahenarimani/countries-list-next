@@ -1,4 +1,4 @@
-import { Country } from "../../types/country";
+import { Country } from "../types/country";
 export default async function getAllCountries(): Promise<Country[]> {
   try {
     const res = await fetch("https://restcountries.com/v3.1/all");
