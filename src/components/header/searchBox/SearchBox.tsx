@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext } from "react";
 import AsyncSelect from "react-select/async";
-import { CountryContext } from "../../../app/context/CountriesContext";
+import { CountryContext } from "../../../context/CountriesContext";
 import { contextProp } from "../../../types/country";
 type OptionType = {
   label: string;

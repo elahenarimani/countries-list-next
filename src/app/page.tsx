@@ -12,7 +12,7 @@ export default function Home() {
   //   );
   // }
   return (
-    <div  className="h-screen overflow-y-auto">
+    <div  className="overflow-y-auto">
       <Header />
       <CountryList />
     </div>

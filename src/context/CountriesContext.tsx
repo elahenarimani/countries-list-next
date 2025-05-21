@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useEffect, useState } from "react";
-import { Country } from "../../types/country";
-import getAllCountries from "../server/page";
+import { Country } from "../types/country";
+import getAllCountries from "../app/server/page";
 interface contextProp{
     countries:Country[],
     setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
