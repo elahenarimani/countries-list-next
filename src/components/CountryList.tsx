@@ -14,9 +14,11 @@ const CountryList = (): ReactElement => {
   const countryContext: contextProp | null = useContext(CountryContext);
   const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 12;
-  // const totalPages = Math.ceil(countryContext?.countries?.length ?? +"" / countriesPerPage);
   const indexOfLast = currentPage * countriesPerPage;
   const indexOfFirst = indexOfLast - countriesPerPage;
+  console.log( Math.ceil(
+                countryContext?.countries?.length  ?? 0 / countriesPerPage
+              ))
   function handlePrevPage() {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -25,7 +27,7 @@ const CountryList = (): ReactElement => {
   function handleNextPage() {
     if (
       currentPage <
-      Math.ceil(countryContext?.countries?.length ?? +"" / countriesPerPage)
+      Math.ceil(countryContext?.countries?.length ?? 0 / countriesPerPage)
     ) {
       setCurrentPage(currentPage + 1);
     }
@@ -33,12 +35,8 @@ const CountryList = (): ReactElement => {
   const currentCountries = useMemo(() => {
     return countryContext?.countries?.slice(indexOfFirst, indexOfLast);
   }, [countryContext?.countries, currentPage]);
-  // const paginate = (pageNumber: number) => {
-  //   setCurrentPage(pageNumber);
-  // };
-
   return (
-    <main className="country w-full h-full pt-[100px] px-[10px] pb-[10px]">
+    <main className="country w-full h-full pt-[100px] px-[10px] ">
       <ul className="xl:max-w-[1280px] py-[10px] w-full h-full mr-auto ml-auto   grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 place-items-center bg-[#AFCDDD] opacity-80 rounded-[5px] ">
         {currentCountries?.map((country: Country) => (
           <li
@@ -78,26 +76,35 @@ const CountryList = (): ReactElement => {
           </li>
         ))}
       </ul>
-      <div className="pagination-controls w-full  ">
-        <section className="button-wrapper flex justify-end items-center">
+      <div className="pagination-controls w-full h-[50px] ">
+        <section className="button-wrapper w-full h-full flex justify-end items-center px-[40px] gap-5">
           <Button
-            className="icon-prev"
+            className={` icon-prev w-6 h-6 rounded-[5px]  ${
+              currentPage === 1 ? "bg-white cursor-not-allowed bg-opacity-60" : "bg-gray-600 cursor-pointer"
+            }`}
             onClickHandler={handlePrevPage}
             disabled={currentPage === 1}
           >
-            <GrFormPrevious />
+            <GrFormPrevious className="w-full h-full" />
           </Button>
           <Button
-            className="icon-next "
+            className={` icon-prev w-6 h-6 rounded-[5px]  ${
+              currentPage ===
+              Math.ceil(
+                (countryContext?.countries?.length ?? 0) / countriesPerPage
+              )
+                ? "bg-white cursor-not-allowed bg-opacity-60"
+                : "bg-gray-500 cursor-pointer"
+            }`}
             onClickHandler={handleNextPage}
             disabled={
               currentPage ===
               Math.ceil(
-                countryContext?.countries?.length ?? +"" / countriesPerPage
+                (countryContext?.countries?.length ?? 0) / countriesPerPage
               )
             }
           >
-            <GrFormNext />
+            <GrFormNext className="w-full h-full" />
           </Button>
         </section>
       </div>

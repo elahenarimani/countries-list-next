@@ -1,8 +1,16 @@
 // import { Country } from "@/types/country";
+
+"use client";
 import Image from "next/image";
 import React from "react";
+import dynamic from 'next/dynamic';
 // import  { useContext } from "react";
 import type { ReactElement } from "react";
+// import SearchBox from "./searchBox/SearchBox";
+const SearchBox = dynamic(() => import('./searchBox/SearchBox'), {
+  ssr: false, 
+  loading: () => <p>در حال بارگذاری...</p>,  
+});
 // import SearchBox from "./searchBox/SearchBox";
 // import { CountryContext } from "../../app/context/CountriesContext";
 // import { contextProp } from "../../types/country";
@@ -18,7 +26,7 @@ const Header = (): ReactElement => {
         <Image src="/logo.webp" alt="logo" width={400} height={200}  />
       </div>
       <div className="w-full h-[50px] sticky top-0 bg-white z-50 py-2">
-        {/* <SearchBox/> */}
+        <SearchBox/>
       </div>
     </div>
   );
