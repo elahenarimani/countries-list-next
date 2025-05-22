@@ -1,7 +1,7 @@
 import Header from "@/components/header/Header";
 import React from "react";
 import dynamic from "next/dynamic";
-import ToggleDarkMode from "@/components/ToggleDarkMode";
+
 const CountryList = dynamic(() => import("@/components/CountryList"), {
   loading: () => <p className="text-center text-gray-500 mt-10">در حال بارگذاری لیست کشورها...</p>,
 });
@@ -17,7 +17,7 @@ export default function Home() {
   // }
   return (
     <div  className="overflow-y-auto">
-       
+      
       <Header />
       <CountryList />
     </div>

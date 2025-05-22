@@ -3,9 +3,9 @@ interface Props{
   onClickHandler: () => void;
   className?: string;
   disabled?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
-const Button = ({onClickHandler, className, disabled, children}:Props) => {
+const Button = ({onClickHandler, className, disabled, children }:Props) => {
   return (
     <div>
       <button

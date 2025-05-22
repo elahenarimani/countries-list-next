@@ -2,14 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import CountriesContext from "../context/CountriesContext";
-import { ThemeProvider } from "next-themes";
-import ToggleDarkMode from "@/components/ToggleDarkMode";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -26,13 +22,10 @@ export default function RootLayout({
 }>): React.ReactElement {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
+      <body id="theme"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class">
-          <ToggleDarkMode />
-          <CountriesContext>{children}</CountriesContext>
-        </ThemeProvider>
+        <CountriesContext>{children}</CountriesContext>
       </body>
     </html>
   );

@@ -36,7 +36,7 @@ const CountryList = (): ReactElement => {
     return countryContext?.countries?.slice(indexOfFirst, indexOfLast);
   }, [countryContext?.countries, currentPage]);
   return (
-    <main className="country w-full h-full pt-[100px] px-[10px] ">
+    <main className="country-list country w-full h-full pt-[100px] px-[10px] ">
       <ul className="xl:max-w-[1280px] py-[10px] w-full h-full mr-auto ml-auto   grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 place-items-center bg-[#AFCDDD] opacity-80 rounded-[5px] ">
         {currentCountries?.map((country: Country) => (
           <li

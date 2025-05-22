@@ -9,7 +9,7 @@ import type { ReactElement } from "react";
 // import SearchBox from "./searchBox/SearchBox";
 const SearchBox = dynamic(() => import('./searchBox/SearchBox'), {
   ssr: false, 
-  loading: () => <p>در حال بارگذاری...</p>,  
+  loading: () => <p>Loading countries data...</p>,  
 });
 // import SearchBox from "./searchBox/SearchBox";
 // import { CountryContext } from "../../app/context/CountriesContext";
@@ -21,7 +21,7 @@ const Header = (): ReactElement => {
  
   // const countryContext: contextProp | null = useContext(CountryContext);
   return (
-    <div className="w-full h-[230px] max-w-full ml-auto mr-auto  pt-[24px] pl-[100px] pr-[100px] flex flex-col justify-start items-center ">
+    <div className="header w-full h-[230px] max-w-full ml-auto mr-auto  pt-[24px] pl-[100px] pr-[100px] flex flex-col justify-start items-center ">
       <div className="w-full h-[160px] flex flex-row justify-center items-start">
         <Image src="/logo.webp" alt="logo" width={400} height={200}  />
       </div>
