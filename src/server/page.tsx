@@ -1,3 +1,4 @@
+"use client";
 import { Country } from "../types/country";
 export default async function getAllCountries(): Promise<Country[]> {
   try {

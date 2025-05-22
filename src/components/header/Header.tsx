@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 // import  { useContext } from "react";
 import type { ReactElement } from "react";
-import SearchBox from "./searchBox/SearchBox";
+// import SearchBox from "./searchBox/SearchBox";
 // import { CountryContext } from "../../app/context/CountriesContext";
 // import { contextProp } from "../../types/country";
 // interface Props {
@@ -18,7 +18,7 @@ const Header = (): ReactElement => {
         <Image src="/logo.webp" alt="logo" width={400} height={200}  />
       </div>
       <div className="w-full h-[50px] sticky top-0 bg-white z-50 py-2">
-        <SearchBox/>
+        {/* <SearchBox/> */}
       </div>
     </div>
   );

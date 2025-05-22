@@ -1,6 +1,14 @@
-.country{
+.country {
   background-image: url("../../public/hp-container-one-bg.5f4e3204a00f3f9cd318.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
+}
+.two-line-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
