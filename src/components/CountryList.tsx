@@ -62,11 +62,11 @@ const CountryList = (): ReactElement => {
               </div>
               <div className="w-full h-full flex flex-col justify-between gap-6">
                 <div className="flex justify-items-start gap-1">
-                  <span className="font-semibold ">capital:</span>
+                  <strong className="font-semibold ">capital:</strong>
                   <span className="truncate">{country?.capital}</span>
                 </div>
                 <div className="flex justify-items-start gap-1">
-                  <span className="font-semibold">languages:</span>
+                  <strong className="font-semibold">languages:</strong>
                   <span className="truncate">
                     {Object.values(country?.languages ?? {})[0] ?? "-"}
                   </span>

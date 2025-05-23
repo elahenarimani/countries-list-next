@@ -1,4 +1,4 @@
-import Header from "@/components/header/Header";
+
 import React from "react";
 import dynamic from "next/dynamic";
 
@@ -17,8 +17,6 @@ export default function Home() {
   // }
   return (
     <div  className="overflow-y-auto">
-      
-      <Header />
       <CountryList />
     </div>
   );

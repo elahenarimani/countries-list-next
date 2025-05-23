@@ -2,14 +2,16 @@
 
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 // import  { useContext } from "react";
 import type { ReactElement } from "react";
+import { TiSocialDribbbleCircular } from "react-icons/ti";
 // import SearchBox from "./searchBox/SearchBox";
-const SearchBox = dynamic(() => import('./searchBox/SearchBox'), {
-  ssr: false, 
-  loading: () => <p>Loading countries data...</p>,  
+const SearchBox = dynamic(() => import("./searchBox/SearchBox"), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
 });
 // import SearchBox from "./searchBox/SearchBox";
 // import { CountryContext } from "../../app/context/CountriesContext";
@@ -18,15 +20,19 @@ const SearchBox = dynamic(() => import('./searchBox/SearchBox'), {
 //   countries: Country[];
 // }
 const Header = (): ReactElement => {
- 
   // const countryContext: contextProp | null = useContext(CountryContext);
   return (
-    <div className="header w-full h-[230px] max-w-full ml-auto mr-auto  pt-[24px] pl-[100px] pr-[100px] flex flex-col justify-start items-center ">
-      <div className="w-full h-[160px] flex flex-row justify-center items-start">
-        <Image src="/logo.webp" alt="logo" width={400} height={200}  />
-      </div>
-      <div className="w-full h-[50px] sticky top-0 bg-white z-50 py-2">
-        <SearchBox/>
+    <div className="header w-full h-[60px] lg:h-[150px] max-w-full ml-auto mr-auto px-[18px] bg-gray-200 lg:pl-[100px] lg:pr-[100px] flex flex-row justify-between items-center gap-5 lg:gap-0 ">
+      <Link href={`/`}>
+        <div className="hidden lg:flex w-full h-[100px] flex-row justify-center items-start">
+          <Image src="/logo.webp" alt="logo" width={250} height={100} />
+        </div>
+        <div className="w-[30px] h-[30px] lg:hidden text-gray-500 flex justify-center items-center">
+          <TiSocialDribbbleCircular className="w-full h-full" />
+        </div>
+      </Link>
+      <div className=" w-full h-full sticky z-50 bg-gray-200  ">
+        <SearchBox />
       </div>
     </div>
   );

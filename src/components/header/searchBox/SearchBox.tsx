@@ -11,7 +11,9 @@ import { useRouter } from "next/navigation";
 export default function SearchBox() {
   const router = useRouter();
   const countryContext: contextProp | null = useContext(CountryContext);
-  if (!countryContext) return null;
+  console.log("SearchBox rendered");
+console.log("Countries: ", countryContext?.countries);
+  if (!countryContext?.countries) return null;
   const loadOptions = (inputValue: string): Promise<OptionType[]> => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -34,12 +36,12 @@ export default function SearchBox() {
     }
   };
   return (
-    <div className="w-full max-w-md mx-auto h-full ltr">
+    <div className="w-full max-w-md mx-auto h-full ltr py-3 lg:py-12 ">
       <AsyncSelect
         cacheOptions
         defaultOptions
         loadOptions={loadOptions}
-        placeholder="Search country..."
+        placeholder="Enter your country name..."
         onChange={handleChange}
         styles={{
         input: (base) => ({
