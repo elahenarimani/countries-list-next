@@ -1,23 +1,23 @@
 "use client";
 import React, { useContext } from "react";
 import AsyncSelect from "react-select/async";
+import { useRouter } from "next/navigation";
 import { CountryContext } from "../../../context/CountriesContext";
 import { contextProp } from "../../../types/country";
+import { useTheme } from "../../../context/ThemeContext";
 type OptionType = {
   label: string;
-  value: string |undefined;
+  value: string | undefined;
 };
-import { useRouter } from "next/navigation";
 export default function SearchBox() {
   const router = useRouter();
   const countryContext: contextProp | null = useContext(CountryContext);
-  console.log("SearchBox rendered");
-console.log("Countries: ", countryContext?.countries);
+  const { theme } = useTheme();
   if (!countryContext?.countries) return null;
   const loadOptions = (inputValue: string): Promise<OptionType[]> => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const filtered : OptionType[]= countryContext?.countries
+        const filtered: OptionType[] = countryContext?.countries
           .filter((country) =>
             country.name.common.toLowerCase().includes(inputValue.toLowerCase())
           )
@@ -31,12 +31,18 @@ console.log("Countries: ", countryContext?.countries);
   };
   const handleChange = (selectedOption: OptionType | null) => {
     if (selectedOption) {
-    const countryCode : string | undefined= countryContext?.countries.find(item => item.cca3== selectedOption.value)?.cca3
-      router.push(`/countryList2/${countryCode}`);
+      const countryCode: string | undefined = countryContext?.countries.find(
+        (item) => item.cca3 == selectedOption.value
+      )?.cca3;
+      router.push(`/countryCode/${countryCode}`);
     }
   };
   return (
-    <div className="w-full max-w-md mx-auto h-full ltr py-3 lg:py-12 ">
+    <div
+      className={`w-full max-w-md mx-auto  ltr  ${
+        theme === "light" ? "bg-gray-200 text-black" : "bg-gray-800 text-white"
+      }`}
+    >
       <AsyncSelect
         cacheOptions
         defaultOptions
@@ -44,9 +50,13 @@ console.log("Countries: ", countryContext?.countries);
         placeholder="Enter your country name..."
         onChange={handleChange}
         styles={{
-        input: (base) => ({
+          input: (base) => ({
             ...base,
             direction: "ltr",
+          }),
+          placeholder: (base) => ({
+            ...base,
+            color: "rgba(30,58,138)",
           }),
         }}
       />

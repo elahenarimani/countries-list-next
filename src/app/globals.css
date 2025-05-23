@@ -18,7 +18,6 @@
     --foreground: #ededed;
   }
 }
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -29,7 +28,3 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
 }
-/* * {
-  margin: 0;
-  padding: 0;
-} */

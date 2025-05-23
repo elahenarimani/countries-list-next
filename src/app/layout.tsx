@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import CountriesContext from "../context/CountriesContext";
 import Header from "@/components/header/Header";
+import { ThemeProvider } from "../context/ThemeContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,9 +27,12 @@ export default function RootLayout({
         id="theme"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       
-        <CountriesContext>
-           <Header />{children}</CountriesContext>
+        <ThemeProvider>
+          <CountriesContext>
+            <Header />
+            {children}
+          </CountriesContext>
+        </ThemeProvider>
       </body>
     </html>
   );

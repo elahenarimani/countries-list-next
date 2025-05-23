@@ -7,7 +7,7 @@ export default async function getAllCountries(): Promise<Country[]> {
       throw new Error("Failed to fetch countries");
     }
     const countriesList: Country[] = await res.json();
-    console.log(countriesList)
+    console.log(countriesList);
     return countriesList;
   } catch {
     return [];

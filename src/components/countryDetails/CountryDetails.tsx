@@ -26,26 +26,28 @@ const CountryDetails = ({ code }: props): ReactElement => {
           {country?.flags?.png ? (
             <Image
               src={country.flags.png}
-              alt={`${country?.name?.common || "Country flag"}`}
+              alt={`${country?.name?.official || "Country flag"}`}
               fill
               className="object-cover"
             />
           ) : null}
         </div>
-        <h2 className="text-2xl font-semibold mt-4">{country?.name?.common}</h2>
+        <h2 className="text-2xl font-semibold mt-4">
+          {country?.name?.official}
+        </h2>
         <div className="w-full h-full max-w-[350px] p-5 ">
           <ul className="space-y-3  text-sm text-gray-800 leading-6 ">
             <li className="w-full h-full flex flex-row justify-items-start gap-2">
               <Globe2 className="min-w-[20px] min-h-[20px] text-blue-500" />
               <span>
-                The current population of {country?.name?.common} is{" "}
+                The current population of {country?.name?.official} is{" "}
                 <strong> {country?.population}.</strong>
               </span>
             </li>
             <li className="w-full h-full flex flex-row justify-items-start gap-2">
               <Landmark className="min-w-[20px] min-h-[20px] text-green-600" />
               <span>
-                {country?.name?.common} World ranking is{" "}
+                {country?.name?.official} World ranking is{" "}
                 <strong>{country?.ccn3}</strong> in the list of{" "}
                 <Link
                   href="https://www.worldometers.info/world-population/"
@@ -80,24 +82,20 @@ const CountryDetails = ({ code }: props): ReactElement => {
           </ul>
         </div>
       </div>
-
       <div className="desktop hidden md:block max-w-4/5 ml-auto mr-auto mt-[30px] px-[18px]">
-       <div className="flex flex-col justify-around items-center">
-         <h2 className="text-2xl  font-semibold   mb-4 text-gray-700">
-          Country Statistics and Population
-        </h2>
-        <h3 className="text-xl font-bold  mt-4">
-              {country?.name?.common}
-            </h3>
-       </div>
+        <div className="flex flex-col justify-around items-center">
+          <h2 className="text-2xl  font-semibold   mb-4 text-gray-700">
+            Country Statistics and Population
+          </h2>
+          <h3 className="text-xl font-bold  mt-4">{country?.name?.official}</h3>
+        </div>
         <div className="w-full h-full flex justify-between items-center ">
           <div className="max-w-[350px] flex flex-col justify-between items-center  gap-[15px] p-10">
-            
             <div className="relative max-w-[350px] min-w-[350px] aspect-[2/1] shrink-0 rounded-[10px] overflow-hidden border-solid border-1px border-black">
               {country?.flags?.png ? (
                 <Image
                   src={country.flags.png}
-                  alt={`${country?.name?.common || "Country flag"}`}
+                  alt={`${country?.name?.official || "Country flag"}`}
                   fill
                   className="object-cover"
                 />

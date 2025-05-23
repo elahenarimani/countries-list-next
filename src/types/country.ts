@@ -88,7 +88,7 @@ export interface Country {
     regex?: string | null;
   };
 }
-export interface contextProp{
-    countries:Country[],
-    setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
+export interface contextProp {
+  countries: Country[];
+  setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
 }
