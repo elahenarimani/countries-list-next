@@ -1,4 +1,5 @@
-export default function Loading() {
+import { JSX } from "react";
+export default function Loading(): JSX.Element  {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="text-center space-y-4">

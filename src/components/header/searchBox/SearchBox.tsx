@@ -5,10 +5,7 @@ import { useRouter } from "next/navigation";
 import { CountryContext } from "../../../context/CountriesContext";
 import { contextProp } from "../../../types/country";
 import { useTheme } from "../../../context/ThemeContext";
-type OptionType = {
-  label: string;
-  value: string | undefined;
-};
+import { OptionType } from "../../../types/country";
 export default function SearchBox() {
   const router = useRouter();
   const countryContext: contextProp | null = useContext(CountryContext);

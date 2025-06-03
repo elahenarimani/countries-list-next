@@ -33,7 +33,7 @@ const CountryList = (): ReactElement => {
   }
   const currentCountries = useMemo(() => {
     return countryContext?.countries?.slice(indexOfFirst, indexOfLast);
-  }, [countryContext?.countries, currentPage]);
+  }, [countryContext?.countries, indexOfLast, indexOfFirst]);
   return (
     <main
       className={`country-list country w-full h-full pt-[100px] px-[10px] ${

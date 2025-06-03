@@ -92,3 +92,7 @@ export interface contextProp {
   countries: Country[];
   setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
 }
+export type OptionType = {
+  label: string;
+  value: string | undefined;
+};
