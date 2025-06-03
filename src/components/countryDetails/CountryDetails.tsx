@@ -18,7 +18,7 @@ const CountryDetails = ({ code }: props): ReactElement => {
   );
   return (
     <div>
-      <div className="mobile md:hidden w-full h-full flex flex-col justify-items-start items-center pl-[18px] pr-[18px] mt-[50px] ">
+      <div className="mobile md:hidden w-full h-full flex flex-col justify-items-start items-center pl-[18px] pr-[18px] mt-[50px] ${} ">
         <h2 className="text-xl  font-bold  flex justify-center items-center mb-4 text-gray-700">
           Country Statistics and Population
         </h2>
