@@ -36,7 +36,7 @@ const CountryList = (): ReactElement => {
   }, [countryContext?.countries, indexOfLast, indexOfFirst]);
   return (
     <main
-      className={`country-list country w-full h-full pt-[100px] px-[10px] ${
+      className={`country-list country w-full min-h-screen max-h-screen pt-[100px] px-[10px] ${
         theme === "dark" ? "dark" : ""
       } ${theme === "light" ? "text-black" : "text-white"}`}
     >
