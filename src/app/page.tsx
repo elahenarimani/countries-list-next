@@ -6,7 +6,7 @@ const CountryList = dynamic(() => import("@/components/CountryList"), {
 });
 export default function Home() {
   return (
-    <div className="overflow-y-auto">
+    <div >
       <CountryList />
     </div>
   );

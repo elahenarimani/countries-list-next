@@ -17,9 +17,7 @@ const CountryList = (): ReactElement => {
   const countriesPerPage = 12;
   const indexOfLast = currentPage * countriesPerPage;
   const indexOfFirst = indexOfLast - countriesPerPage;
-  console.log("data received:", countryContext?.countries);
   const { theme } = useTheme();
-  console.log(theme)
   function handlePrevPage() {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -38,15 +36,23 @@ const CountryList = (): ReactElement => {
   }, [countryContext?.countries, indexOfLast, indexOfFirst]);
   return (
     <main
-      className={`country-list country w-full min-h-screen max-h-screen pt-[100px] px-[10px] ${
+      className={`country-list country w-full h-full pt-[100px] px-[10px] ${
         theme === "dark" ? "dark" : ""
       } ${theme === "light" ? "text-black" : "text-white"}`}
     >
-      <ul className={`xl:max-w-[1280px] pb-[10px] pt-[20px] w-full h-full mr-auto ml-auto   grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 place-items-center rounded-[5px]  ${theme === "light" ? "bg-[#AFCDDD] opacity-80 text-black" : "bg-gray-800 text-white bg-[#AFCDDD] opacity-70"}`}>
+      <ul
+        className={`xl:max-w-[1280px] pb-[10px] pt-[20px] w-full h-full mr-auto ml-auto   grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 place-items-center rounded-[5px]  ${
+          theme === "light"
+            ? "bg-[#AFCDDD] opacity-80 text-black"
+            : "bg-gray-800 text-white bg-[#AFCDDD] opacity-70"
+        }`}
+      >
         {currentCountries?.map((country: Country) => (
           <li
             key={country.cca3}
-            className={`transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:-translate-y-1 w-full  rounded pointer  lg:h-[200px] max-w-[500px] md:w-[300px]  h-[150px]  px-[10px] sm:pl-0 sm:pr-0  ${theme === "light" ? "hover:bg-blue-100" : "hover:bg-blue-900"}`}
+            className={`transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:-translate-y-1 w-full  rounded pointer  lg:h-[200px] max-w-[500px] md:w-[300px]  h-[150px]  px-[10px] sm:pl-0 sm:pr-0  ${
+              theme === "light" ? "hover:bg-blue-100" : "hover:bg-blue-900"
+            }`}
           >
             <Link
               href={`/countryCode/${country.cca3}`}
