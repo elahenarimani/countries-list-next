@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useEffect, useState } from "react";
 import { Country } from "../types/country";
-import getAllCountries from "../server/page";
+// import getAllCountries from "../server/rout";
 interface contextProp {
   countries: Country[];
   setCountries: React.Dispatch<React.SetStateAction<Country[]>>;
@@ -11,13 +11,25 @@ const CountriesContext = ({ children }: { children: React.ReactNode }) => {
   const [countries, setCountries] = useState<Country[]>(() => {
     return [];
   });
+  // useEffect(() => {
+  //   async function fetchCountries() {
+  //     const data = await getAllCountries();
+  //     setCountries(data);
+  //   }
+  //   fetchCountries();
+  // }, []);
   useEffect(() => {
-    async function fetchCountries() {
-      const data = await getAllCountries();
-      setCountries(data);
+  async function fetchCountries() {
+    const res = await fetch("https://restcountries.com/v3.1/all");
+    if (!res.ok) {
+      console.error("API fetch error");
+      return;
     }
-    fetchCountries();
-  }, []);
+    const data = await res.json();
+    setCountries(data);
+  }
+  fetchCountries();
+}, []);
   return (
     <CountryContext.Provider value={{ countries, setCountries }}>
       {children}

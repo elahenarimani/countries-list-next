@@ -17,8 +17,9 @@ const CountryList = (): ReactElement => {
   const countriesPerPage = 12;
   const indexOfLast = currentPage * countriesPerPage;
   const indexOfFirst = indexOfLast - countriesPerPage;
-  console.log("code received:", countryContext?.countries);
+  console.log("data received:", countryContext?.countries);
   const { theme } = useTheme();
+  console.log(theme)
   function handlePrevPage() {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
