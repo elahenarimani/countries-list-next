@@ -13,6 +13,7 @@ import Button from "./button/Button";
 import { useTheme } from "../context/ThemeContext";
 const CountryList = (): ReactElement => {
   const countryContext: contextProp | null = useContext(CountryContext);
+  console.log()
   const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 12;
   const indexOfLast = currentPage * countriesPerPage;
@@ -44,7 +45,7 @@ const CountryList = (): ReactElement => {
         className={`xl:max-w-[1280px] pb-[10px] pt-[20px] w-full h-full mr-auto ml-auto   grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 place-items-center rounded-[5px]  ${
           theme === "light"
             ? "bg-[#AFCDDD] opacity-80 text-black"
-            : "bg-gray-800 text-white bg-[#AFCDDD] opacity-70"
+            : "bg-gray-800 text-white  opacity-70"
         }`}
       >
         {currentCountries?.map((country: Country) => (
