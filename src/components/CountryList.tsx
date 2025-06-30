@@ -13,7 +13,6 @@ import Button from "./button/Button";
 import { useTheme } from "../context/ThemeContext";
 const CountryList = (): ReactElement => {
   const countryContext: contextProp | null = useContext(CountryContext);
-  console.log(countryContext?.countries)
   const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 12;
   const indexOfLast = currentPage * countriesPerPage;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import AsyncSelect from "react-select/async";
 import { useRouter } from "next/navigation";
 import { CountryContext } from "../../../context/CountriesContext";
@@ -8,6 +8,7 @@ import { useTheme } from "../../../context/ThemeContext";
 import { OptionType } from "../../../types/country";
 export default function SearchBox() {
   const router = useRouter();
+  const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
   const countryContext: contextProp | null = useContext(CountryContext);
   const { theme } = useTheme();
   if (!countryContext?.countries) return null;
@@ -26,14 +27,16 @@ export default function SearchBox() {
       }, 300);
     });
   };
-  const handleChange = (selectedOption: OptionType | null) => {
-    if (selectedOption) {
-      const countryCode: string | undefined = countryContext?.countries.find(
-        (item) => item.cca3 == selectedOption.value
-      )?.cca3;
-      router.push(`/countryCode/${countryCode}`);
-    }
-  };
+  const handleChange = (option: OptionType | null) => {
+  if (option) {
+    setSelectedOption(option);
+    const countryCode: string | undefined = countryContext?.countries.find(
+      (item) => item.cca3 == option.value
+    )?.cca3;
+    router.push(`/countryCode/${countryCode}`);
+    setSelectedOption(null);  
+  }
+};
   return (
     <div
       className={`w-full max-w-md mx-auto  ltr  ${
@@ -45,6 +48,7 @@ export default function SearchBox() {
         defaultOptions
         loadOptions={loadOptions}
         placeholder="Enter your country name..."
+        value={selectedOption}
         onChange={handleChange}
         styles={{
           input: (base) => ({
